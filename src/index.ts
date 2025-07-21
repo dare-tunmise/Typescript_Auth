@@ -6,6 +6,8 @@ import compression from 'compression';
 import cors from 'cors';
 import mongoose from 'mongoose'
 import { error } from 'console';
+import router from './router';
+import 'dotenv/config'
 
 const app = express();
 
@@ -23,10 +25,12 @@ server.listen(8080, ()=> {
     console.log(`server running  on  http://localhost:8080/`);
 })
 
-const MONGO_URI ='mongodb+srv://daretunmise:daretunmise@nodetuts.gabgh.mongodb.net/miniproj?retryWrites=true&w=majority&appName=nodetuts';
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+app.use('/', router)
 
 
