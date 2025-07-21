@@ -30,3 +30,6 @@ export const register = async(request: express.Request, response: express.Respon
         return response.sendStatus(400);
     }
 }
+
+export const login = async (request: express.Request, response: express.Response) => {
+}
